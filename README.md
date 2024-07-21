@@ -18,7 +18,9 @@ Output file:
 
 **.out file**
 1st row = chromosome id, gene id, transcript id, circRNA id
+
 2nd row = isoform num (if there is more than one isoform other than "isoform1") separated by "_" with the length of simulated circRNA (in number format), exon information separated by commas ( exon1:exon2!strand ) 
+
 3rd row until the next 1st row = ">", read number for that circRNA, read number in fastq file
                  = if "**" indicates BSJ read id, with the number beside as either read 1 or read 2
 
@@ -26,6 +28,7 @@ Output file:
 **bsj_counts.out**
 
 1st column = circRNA id
+
 2nd column = BSJ read count simulated
 
 

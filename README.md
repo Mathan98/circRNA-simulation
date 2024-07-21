@@ -10,7 +10,8 @@ i) manual read id designation (maybe useful when simulation involves pooling of 
 ii) new tab-delimited file that describes BSJ count number for each circRNA simulated.
 iii) circRNA reads are defined as BSJs **ONLY** if they overlap the left and right sequence of a BSJ by **5 nucleotides** (as oppose to 20 in the original). This is according to the default parameter of the CIRIquant tool. Can be manually changed at line 472-479
 
-Output file:/n 
+Output file:
+
 **.out file**
 1st row = chromosome id, gene id, transcript id, circRNA id
 2nd row = isoform num (if there is more than one isoform other than "isoform1") separated by "_" with the length of simulated circRNA (in number format), exon information separated by commas ( exon1:exon2!strand ) 

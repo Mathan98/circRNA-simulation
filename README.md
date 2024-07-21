@@ -8,7 +8,7 @@ Originally, there is a lack of manual to use this simulation tool. Hence, we des
 Moreover, the perl script deposited here is **MODIFIED** to include additional functions. Modifications include:
 i) manual read id designation (maybe useful when simulation involves pooling of data) (-RN parameter)
 ii) new tab-delimited file that describes BSJ count number for each circRNA simulated.
-iii) circRNA reads are defined as BSJs *ONLY* if they overlap the left and right sequence of a BSJ by *5 nucleotides* (as oppose to 20 in the original). This is according to the default parameter of the CIRIquant tool. Can be manually changed at line 472-479
+iii) circRNA reads are defined as BSJs **ONLY** if they overlap the left and right sequence of a BSJ by **5 nucleotides** (as oppose to 20 in the original). This is according to the default parameter of the CIRIquant tool. Can be manually changed at line 472-479
 
 Output file: 
 **.out file**
@@ -25,7 +25,8 @@ Output file:
 
 
 
-References
+**References**
+
 Gao, Y., Wang, J., & Zhao, F. (2015). CIRI: an efficient and unbiased algorithm for de novo circular RNA identification. Genome Biology, 16(1), 4. https://doi.org/10.1186/s13059-014-0571-3 
 
 Zheng, Y., Ji, P., Chen, S., Hou, L., & Zhao, F. (2019). Reconstruction of full-length circular RNAs enables isoform-level quantification. Genome Medicine, 11(1), 2. https://doi.org/10.1186/s13073-019-0614-1 

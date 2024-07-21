@@ -15,6 +15,7 @@ iii) circRNA reads are defined as BSJs **ONLY** if they overlap the left and rig
 Output file:
 
 **.out file**
+
 1st row = chromosome id, gene id, transcript id, circRNA id
 
 2nd row = isoform num (if there is more than one isoform other than "isoform1") separated by "_" with the length of simulated circRNA (in number format), exon information separated by commas ( exon1:exon2!strand ) 

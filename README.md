@@ -8,8 +8,11 @@ Originally, there is a lack of manual to use this simulation tool. Hence, we des
 Moreover, the perl script deposited here is **MODIFIED** to include additional functions. Modifications include:
 
 i) manual read id designation (maybe useful when simulation involves pooling of data) (-RN parameter)
+
 ii) new tab-delimited file that describes BSJ count number for each circRNA simulated.
+
 iii) circRNA reads are defined as BSJs **ONLY** if they overlap the left and right sequence of a BSJ by **5 nucleotides** (as oppose to 20 in the original). This is according to the default parameter of the CIRIquant tool. Can be manually changed at line 472-479
+
 
 Output file:
 

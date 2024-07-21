@@ -1,9 +1,7 @@
 # circRNA-simulation
 The "circRNA-simulation" repository provides a comprehensive framework for simulating circular RNA (circRNA) datasets.
 
-This perl script is originally made by CIRI-full authors for simulating circRNAs using a reference fasta file and a gtf annotation file.
-
-Originally, there is a lack of manual to use this simulation tool. Hence, we describe in detail here regarding the output file.
+This perl script is originally made by CIRI-full authors for simulating circRNAs using a reference fasta file and a gtf annotation file. Originally, there is a lack of manual to use this simulation tool. Hence, we describe in detail here regarding the output file.
 
 Moreover, the perl script deposited here is **MODIFIED** to include additional functions. Modifications include:
 

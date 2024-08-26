@@ -1,0 +1,21 @@
+
+## for circRNA 2X and linear RNA 100X coverage with sequencing error 1%
+for j in {001..016}; 
+do 
+# Read 1
+cat ./circRNA_simulated_reads/circ_reads_chrAll_coverage2_error1/Sim_"$j"_circ_1.fq ./linearRNA_simulated_reads/lin_reads_chrAll_coverage100_error1/SIM_"$j"/header_sample_01_1.fq > ./circRNA_mix_linearRNA_reads/circ_lin_reads_cov_2_100_error_1/Sim_"$j"_1.fq
+
+# Read 2
+cat ./circRNA_simulated_reads/circ_reads_chrAll_coverage2_error1/Sim_"$j"_circ_2.fq ./linearRNA_simulated_reads/lin_reads_chrAll_coverage100_error1/SIM_"$j"/SIM_"$j"/header_sample_01_2.fq > ./circRNA_mix_linearRNA_reads/circ_lin_reads_cov_2_100_error_1/Sim_"$j"_2.fq
+done
+
+
+## for circRNA 2X and linear RNA 100X coverage with sequencing error 5%
+for j in {001..016}; 
+do 
+# Read 1
+cat ./circRNA_simulated_reads/circ_reads_chrAll_coverage2_error5/Sim_"$j"_circ_1.fq ./linearRNA_simulated_reads/lin_reads_chrAll_coverage100_error5/SIM_"$j"/header_sample_01_1.fq > ./circRNA_mix_linearRNA_reads/circ_lin_reads_cov_2_100_error_5/Sim_"$j"_1.fq
+
+# Read 2
+cat ./circRNA_simulated_reads/circ_reads_chrAll_coverage2_error5/Sim_"$j"_circ_2.fq ./linearRNA_simulated_reads/lin_reads_chrAll_coverage100_error5/SIM_"$j"/SIM_"$j"/header_sample_01_2.fq > ./circRNA_mix_linearRNA_reads/circ_lin_reads_cov_2_100_error_5/Sim_"$j"_2.fq
+done

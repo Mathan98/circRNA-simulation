@@ -2,7 +2,7 @@
 ## The "circRNA-simulation" repository provides a comprehensive framework for simulating circular RNA (circRNA) and linear RNA reads in a RNA-seq format (fastq files). 
 ## Simulated data is important to benchmark novel mRNA or circRNA pipelines against established pipelines.
 
-We also included **circRNA analysis runs (CIRI2, CIRCexplorer2 and find_circ)**, **benchmarking** and **visualization** scripts.
+### We also included **circRNA analysis runs (CIRI2, CIRCexplorer2 and find_circ)**, **benchmarking** and **visualization** scripts.
 
 The ciri-simulator perl script is originally made by CIRI authors for simulating circRNAs by using reference fasta file and gtf annotation file. Originally, there is a lack of manual to use this simulation tool and intepret its output. Hence, we describe in detail here regarding the use and output file.
 
@@ -40,6 +40,9 @@ iii) circRNA reads are defined as BSJs **ONLY** if they overlap the left and rig
 
 ### Example run
 ```
+For circRNA civerage = 2X, linear coverage = 10x, sequencing error = 1 %, read length = 125bp:
+
+perl CIRI_simulator.pl -O1 Sim_001_circ -O2 Sim_001_linear -G /scr/user/mk_98/Simulated_reads/human_gencode_vch38.gtf -C 2 -LC 10 -R 1 -LR 1 -L 125 -E 1 -D /scr/user/mk_98/Simulated_reads/ChrAll_fa/ -CHR1 0 -M 320 -M2 550 -PM 0 -S 70 -S2 70 -SE 0 -PSI 0 -RN 001
 
 ```
 

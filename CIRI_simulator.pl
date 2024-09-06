@@ -1,11 +1,11 @@
 use 5.012;
 use Getopt::Long;
-my ($circ_fq1, $circ_fq2, $BSJ, $out, $gtf, $coverage, $coverage2, $rand_mode, $rand_mode2, $read_length, $seq_err, $insert_length, $insert_length2, $perc_minor, $sigma, $sigma2, $ref_dir, $read_number, $help, $if_chr, $exon_skipping, $psi);
+my ($circ_fq1, $circ_fq2, $lin_fq3, $lin_fq4, $BSJ, $out, $out2, $gtf, $coverage, $coverage2, $rand_mode, $rand_mode2, $read_length, $seq_err, $insert_length, $insert_length2, $perc_minor, $sigma, $sigma2, $ref_dir, $read_number, $help, $if_chr, $exon_skipping, $psi);
 Getopt::Long::GetOptions(
 	#'1=s'	=>	\$circ_fq1,
 	#'2=s'	=>	\$circ_fq2,
-	'O=s'	=>	\$out,
-	#'O2=s'	=>	\$out2,
+	'O1=s'	=>	\$out,
+	'O2=s'	=>	\$out2,
 	'G=s'	=>	\$gtf,
 	'C=i'	=>	\$coverage,
 	'LC=i'	=>	\$coverage2,
@@ -48,8 +48,8 @@ if(defined($help)){
 	print "Arguments (all required):\n";
 	#print "\t-1\t\toutput simulated PE reads file 1 name\n";
 	#print "\t-2\t\toutput simulated PE reads file 2 name\n";
-	print "\t-O\t\tprefix of output files for circRNAs\n";
-	# print "\t-O2\t\tprefix of output files for linear RNAs\n";
+	print "\t-O1\t\tprefix of output files for circRNAs\n";
+	print "\t-O2\t\tprefix of output files for linear RNAs\n";
 	print "\t-G\t\tinput gtf formatted annotation file name\n";
 	print "\t-C\t\tset coverage or max coverage (when choosing -R 2) for circRNAs\n";
 	print "\t-LC\t\tset coverage or max coverage (when choosing -LR 2) for linear transcripts\n";
@@ -111,15 +111,15 @@ if($if_die == 1){
 $circ_fq1 = $out."_1.fq";
 $circ_fq2 = $out."_2.fq";
 $BSJ = $out."_bsj_counts.out";
-# $lin_fq3 = $out2."_1.fq";
-# $lin_fq4 = $out2."_2.fq";
+$lin_fq3 = $out2."_1.fq";
+$lin_fq4 = $out2."_2.fq";
 $out = $out.".out";
-#$out2 = $out2.".out";
+$out2 = $out2.".out";
 open FQ1, ">", $circ_fq1 or die "cannot write to $circ_fq1:$!";
 open FQ2, ">", $circ_fq2 or die;
 open BSJ, ">", $BSJ or die;
-#open FQ3, ">", $lin_fq3 or die;
-#open FQ4, ">", $lin_fq4 or die;
+open FQ3, ">", $lin_fq3 or die;
+open FQ4, ">", $lin_fq4 or die;
 
 $insert_length -= $read_length;
 my $pi = 3.14159265359;
@@ -133,7 +133,7 @@ my $sim_total;
 $ref_dir = $ref_dir."/" unless rindex($ref_dir, "/") == length($ref_dir) - 1;
 open GTF, "<", $gtf or die "cannot open gtf file: $!";
 open OUT, ">", $out or die;
-#open OUT2, ">", $out2 or die;
+open OUT2, ">", $out2 or die;
 while(<GTF>){
 	chomp;
 	next if /^#/;
@@ -208,8 +208,8 @@ for my $chromo(@chr){
 				}
 			}
 			if ($if_linear == 1){
-				#print OUT2 "$chromo\t$gene\t$trsc\t$chromo:$trsc_str|$trsc_end\t", length($trsc_seq), "\t";
-				#print OUT2 "\n";
+				print OUT2 "$chromo\t$gene\t$trsc\t$chromo:$trsc_str|$trsc_end\t", length($trsc_seq), "\t";
+				print OUT2 "\n";
 				&simulate_reads2( $rand_mode2, $trsc_seq, $coverage2 )
 			}
 			#length($trsc_seq) > $insert_length and 
@@ -267,7 +267,6 @@ for my $chromo(@chr){
 							if ($chr_gene_trsc_exon{$chromo}{$gene}{$trsc}[$qualified_exon_sort[$bingo_num1]][0] < $chr_gene_trsc_exon{$chromo}{$gene}{$trsc}[$qualified_exon_sort[$bingo_num2]][1]){
 								print OUT "$chromo\t$gene\t$trsc\t", $chromo, ":" , $chr_gene_trsc_exon{$chromo}{$gene}{$trsc}[$qualified_exon_sort[$bingo_num1]][0], "|", $chr_gene_trsc_exon{$chromo}{$gene}{$trsc}[$qualified_exon_sort[$bingo_num2]][1], "\nisoform1_", length($cRNA_seq), "\t";
 								print BSJ $chromo, ":" , $chr_gene_trsc_exon{$chromo}{$gene}{$trsc}[$qualified_exon_sort[$bingo_num1]][0], "|", $chr_gene_trsc_exon{$chromo}{$gene}{$trsc}[$qualified_exon_sort[$bingo_num2]][1], "\t";
-
 							}elsif($chr_gene_trsc_exon{$chromo}{$gene}{$trsc}[$qualified_exon_sort[$bingo_num1]][1] > $chr_gene_trsc_exon{$chromo}{$gene}{$trsc}[$qualified_exon_sort[$bingo_num2]][0]){
 								print OUT "$chromo\t$gene\t$trsc\t", $chromo, ":" , $chr_gene_trsc_exon{$chromo}{$gene}{$trsc}[$qualified_exon_sort[$bingo_num2]][0], "|", $chr_gene_trsc_exon{$chromo}{$gene}{$trsc}[$qualified_exon_sort[$bingo_num1]][1], "\nisoform1_", length($cRNA_seq), "\t";
 								print BSJ $chromo, ":" , $chr_gene_trsc_exon{$chromo}{$gene}{$trsc}[$qualified_exon_sort[$bingo_num2]][0], "|", $chr_gene_trsc_exon{$chromo}{$gene}{$trsc}[$qualified_exon_sort[$bingo_num1]][1], "\t";
@@ -340,7 +339,7 @@ sub simulate_reads2{
 		my $err_loci = int( rand( ($read_num)*2 )+1 );
 		$err_read{$err_loci} ++;
 	}
-	#print OUT2 "**\t$seq_length\t$trsc_coverage\t$seq_err\t$read_num\n";
+	print OUT2 "**\t$seq_length\t$trsc_coverage\t$seq_err\t$read_num\n";
 	for my $x( 1 .. $read_num ){
 		my $ins_len_rand = &insert_length_calculation_normal(rand(1), rand(1), rand(1));		#insert length can be simulated later
 		#my $start_loci = int( rand($seq_length - $ins_len_rand - $read_length) );
@@ -377,15 +376,15 @@ sub simulate_reads2{
 			my $ori_base = substr( $seq2, $err_loci, 1 );
 			substr( $seq2, $err_loci, 1 ) = &simulate_seq_error($ori_base);
 		}
-		print FQ1 '@simulate:SRR'."$read_number."."$seqID/1 length=$read_length\n";
-		print FQ2 '@simulate:SRR'."$read_number."."$seqID/2 length=$read_length\n";
-		print FQ1 "$seq1\n";
-		print FQ2 "$seq2\n";
-		print FQ1 "+\n";
-		print FQ2 "+\n";
-		print FQ1 ("!" x $read_length) . "\n";
-		print FQ2 ("!" x $read_length) . "\n";
-		# print OUT2 ">\t$x\t$seqID\n";
+		print FQ3 '@simulate:SRR'."$read_number."."$seqID/1 length=$read_length\n";
+		print FQ4 '@simulate:SRR'."$read_number."."$seqID/2 length=$read_length\n";
+		print FQ3 "$seq1\n";
+		print FQ4 "$seq2\n";
+		print FQ3 "+\n";
+		print FQ4 "+\n";
+		print FQ3 ("!" x $read_length) . "\n";
+		print FQ4 ("!" x $read_length) . "\n";
+		print OUT2 ">\t$x\t$seqID\n";
 	}
 }
 
@@ -472,7 +471,6 @@ sub simulate_reads{
 			print OUT "**\t1\n" if ($start_loci >= $seq_length-$read_length+5 and $start_loci <= $seq_length-5);
 			print OUT "**\t2\n" if ($start_loci2%$seq_length >= $seq_length-$read_length+5 and $start_loci2%$seq_length <= $seq_length-5);
 			$bsj ++ if($start_loci >= $seq_length-$read_length+5 and $start_loci <= $seq_length-5 || $start_loci2%$seq_length >= $seq_length-$read_length+5 and $start_loci2%$seq_length <= $seq_length-5);
-
 		}else{
 			print OUT "**\t1\n" if ($start_loci2%$seq_length >= $seq_length-$read_length+5 and $start_loci2%$seq_length <= $seq_length-5);
 			print OUT "**\t2\n" if ($start_loci >= $seq_length-$read_length+5 and $start_loci <= $seq_length-5);

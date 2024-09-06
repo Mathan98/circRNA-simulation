@@ -3,9 +3,9 @@ The "circRNA-simulation" repository provides a comprehensive framework for simul
 
 The ciri-simulator perl script is originally made by CIRI authors for simulating circRNAs by using reference fasta file and gtf annotation file. Originally, there is a lack of manual to use this simulation tool and intepret its output. Hence, we describe in detail here regarding the use and output file.
 
-```
-Moreover, the perl script deposited here is **MODIFIED** to include additional functions. Modifications include:
 
+Moreover, the perl script deposited here is **MODIFIED** to include additional functions. Modifications include:
+```
 i) manual read id designation (maybe useful when simulation involves pooling of data) (-RN parameter)
 
 ii) new tab-delimited file that describes BSJ count number for each circRNA simulated.
@@ -38,7 +38,6 @@ Output file (**.out file**) has 3 rows for each circRNA read:
 
 
 
-```
 **References**
 
 Gao, Y., Wang, J., & Zhao, F. (2015). CIRI: an efficient and unbiased algorithm for de novo circular RNA identification. Genome Biology, 16(1), 4. https://doi.org/10.1186/s13059-014-0571-3 
@@ -46,7 +45,7 @@ Gao, Y., Wang, J., & Zhao, F. (2015). CIRI: an efficient and unbiased algorithm 
 Zheng, Y., Ji, P., Chen, S., Hou, L., & Zhao, F. (2019). Reconstruction of full-length circular RNAs enables isoform-level quantification. Genome Medicine, 11(1), 2. https://doi.org/10.1186/s13073-019-0614-1 
 
 Zhang, J., Chen, S., Yang, J., & Zhao, F. (2020). Accurate quantification of circular RNAs identifies extensive circular isoform switching events. Nature Communications, 11(1), 90. https://doi.org/10.1038/s41467-019-13840-9 
-```
+
 
 
 

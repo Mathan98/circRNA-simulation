@@ -13,7 +13,7 @@ ii) new tab-delimited file that describes BSJ count number for each circRNA simu
 iii) circRNA reads are defined as BSJs **ONLY** if they overlap the left and right sequence of a BSJ by **5 nucleotides** (as oppose to 20 in the original perl script). The overlapping 5 nucleotides parameter is according to the default parameter of CIRIquant. This value can be manually changed at line 472-479 of the perl script.
 ```
 
-A total of 4 output files: circRNA fastq, linearRNA fastq, out file and BSJ reads file
+## A total of 4 output files: circRNA fastq, linearRNA fastq, out file and BSJ reads file
 
 ### Output file (**.out file**) has 3 rows for each circRNA read:
 ```
@@ -35,7 +35,10 @@ A total of 4 output files: circRNA fastq, linearRNA fastq, out file and BSJ read
 
 ```
 
+### Example run
+```
 
+```
 
 
 ## References

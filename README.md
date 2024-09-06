@@ -15,7 +15,7 @@ iii) circRNA reads are defined as BSJs **ONLY** if they overlap the left and rig
 
 A total of 4 output files: circRNA fastq, linearRNA fastq, out file and BSJ reads file
 
-###Output file (**.out file**) has 3 rows for each circRNA read:
+### Output file (**.out file**) has 3 rows for each circRNA read:
 ```
 
 1st row = chromosome id, gene id, transcript id, circRNA id
@@ -27,7 +27,7 @@ A total of 4 output files: circRNA fastq, linearRNA fastq, out file and BSJ read
 
 ```
 
-###bsj_counts.out
+### bsj_counts.out
 ```
 1st column = circRNA id
 
@@ -38,7 +38,7 @@ A total of 4 output files: circRNA fastq, linearRNA fastq, out file and BSJ read
 
 
 
-##References
+## References
 
 Gao, Y., Wang, J., & Zhao, F. (2015). CIRI: an efficient and unbiased algorithm for de novo circular RNA identification. Genome Biology, 16(1), 4. https://doi.org/10.1186/s13059-014-0571-3 
 
